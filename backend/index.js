@@ -8,11 +8,14 @@ const path=require("path");
 const cors=require("cors");
 
 
+const dotenv = require("dotenv"); 
+dotenv.config();
+
 app.use(express.json());//whatever request we get from res is automatically parsed thru json
 app.use(cors());
-
+ 
 //Database connection with mongoDB
-mongoose.connect("mongodb+srv://layashmaveeramalla:layasmongo@cluster0.49lmghz.mongodb.net/Ecommerce");
+mongoose.connect(process.env.MONGO_URI);
 
 //API creation
 app.get("/",(req,res)=>{
